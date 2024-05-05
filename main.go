@@ -1,19 +1,15 @@
 package main
 
 import (
-	// "flag"
+	
 	"fmt"
-	// "io"
 	"encoding/json"
 	"net/http"
 )
 
 func main() {
 
-	// cityPtr := flag.String("city", "New York", "an integer")
-	// fmt.Scanf("%s", &cityPtr)
-	// flag.Parse()
-
+	
 	url := "https://weatherapi-com.p.rapidapi.com/forecast.json?q=New%20%20Delhi&days=3"
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -24,9 +20,7 @@ func main() {
 	res, _ := http.DefaultClient.Do(req)
 
 	defer res.Body.Close()
-	// fmt.Println(res)
-	// fmt.Println(string(body))
-
+	
 	var weatherData map[string]interface{}
 	if err := json.NewDecoder(res.Body).Decode(&weatherData); err != nil {
 		fmt.Println("Error decoding JSON response:", err)
